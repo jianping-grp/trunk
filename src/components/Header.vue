@@ -92,12 +92,12 @@
 					// }
 					]
 				},
+				// {
+				// 	name: 'Service Project',
+                //     url: '/contect'
+				// },
 				{
-					name: 'Service Project',
-                    url: '/contect'
-				},
-				{
-					name: 'Contect',
+					name: 'Contact',
 					url: '/contect'
 				}]
 			}

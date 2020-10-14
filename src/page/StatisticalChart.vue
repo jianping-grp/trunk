@@ -200,12 +200,12 @@ this.data1.datas=this.data
                 }]
             });
          const _this = this;
-         myChart1.on('click', function (params) {
-            if (params.componentType === 'series') {
-              // _this.show = true;
-              _this.$router.push({path:`/clinicalResult/${_this.searchinput}`})
-            }
-        });
+        //  myChart1.on('click', function (params) {
+        //     if (params.componentType === 'series') {
+        //       // _this.show = true;
+        //       _this.$router.push({path:`/clinicalResult/${_this.searchinput}`})
+        //     }
+        // });
         this.loading1=false;
       })
     },
