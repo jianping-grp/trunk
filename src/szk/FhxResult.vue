@@ -61,7 +61,7 @@
 <script>
  import ChildBanner from '@/components/ChildBanner'
   export default {
-    name: "Fdaresult",
+    name: "Fhxresult",
     components:{
       ChildBanner
     },

@@ -84,7 +84,7 @@
 <script>
  import ChildBanner from '@/components/ChildBanner'
   export default {
-    name: "Fdaresult",
+    name: "Fdacresult",
     components:{
       ChildBanner
     },
