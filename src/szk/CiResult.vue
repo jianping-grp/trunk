@@ -82,6 +82,7 @@
 
 <script>
  import ChildBanner from '@/components/ChildBanner'
+   import global from '@/common/global'
   export default {
     name: "Fdaresult",
     components:{
@@ -89,6 +90,7 @@
     },
     data() {
       return {
+        token:global.token,
               param:'',
               id:'',
          fzy:'',
@@ -109,13 +111,13 @@
 
     methods:{
     getdata(val,sea){
-                        this.$axios.get(`http://192.168.1.138:9003/ChemicalIndex/?${sea}&page=${val}`,{
+                        this.$axios.get(`http://${this.token}/ChemicalIndex/?${sea}&page=${val}`,{
         }).then(res=>{this.tableData=res.data.results;this.total=res.data.count;
           console.log(res);
           console.log(this.tableData)})
     },
         getdata2(val,sea){
-                        this.$axios.get(`http://192.168.1.138:9003/ChemicalIndex/?pk=${sea}&page=${val}`,{
+                        this.$axios.get(`http://${this.token}/ChemicalIndex/?pk=${sea}&page=${val}`,{
         }).then(res=>{this.tableData=res.data.results;this.total=res.data.count;
           console.log(res);
           console.log(this.tableData)})

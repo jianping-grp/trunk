@@ -18,6 +18,7 @@
 <script>
   import ChildBanner from '@/components/ChildBanner'
   import Childtable from '@/components/Childtable'
+  import global from '@/common/global'
   export default {
     name: "StatisticalChart",
     components:{
@@ -26,6 +27,7 @@
     },
     data() {
       return {
+        token:global.token,
         searchinput:'',
         show: false,
         data: [],
@@ -51,7 +53,7 @@
       this.getdata2(this.searchinput);
     },
     methods: {
-      getdata(sea){this.$axios.get(`http://192.168.1.138:9003/TargetDistribution/?pk=${sea}`,{
+      getdata(sea){this.$axios.get(`http://${this.token}/TargetDistribution/?pk=${sea}`,{
     }).then(res=>{this.data=res.data;
         console.log(this.data),
         console.log(res)
@@ -157,7 +159,7 @@ this.data1.datas=this.data
         )
         
         },  
-    getdata2(sea){this.$axios.get(`http://192.168.1.138:9003/PhaseDistribution/?pk=${sea}`,{
+    getdata2(sea){this.$axios.get(`http://${this.token}/PhaseDistribution/?pk=${sea}`,{
     }).then(res=>{this.data0=res.data;
         console.log(this.data2),
         console.log(res)

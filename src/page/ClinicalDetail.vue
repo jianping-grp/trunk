@@ -50,6 +50,7 @@
 
 <script>
   import ChildBanner from '@/components/ChildBanner'
+    import global from '@/common/global'
   export default {
     name: "ClinicalDetail",
     components:{
@@ -57,6 +58,7 @@
     },
     data() {
       return {
+        token:global.token,
         searchinput:'',
         tabPosition: '1',
         total:50,
@@ -91,7 +93,7 @@
       //     console.log(this.tableData)
       //     this.loading=false;
       //     })},    
-          getdata(page,sea){this.$axios.get(`http://192.168.1.138:9003/ClinicalDetail/?page=${page}&main_id=${sea}`,{
+          getdata(page,sea){this.$axios.get(`http://${this.token}/ClinicalDetail/?page=${page}&main_id=${sea}`,{
         }).then(res=>{this.tableData=res.data.clinicaldetails[0];this.total=res.data.meta.total_results;
           console.log(res);
           console.log(this.tableData)

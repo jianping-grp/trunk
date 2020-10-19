@@ -72,6 +72,7 @@
 <script>
 import ChildBanner from '@/components/ChildBanner'
 import Childtable from '@/components/Childtable'
+import global from '@/common/global'
 export default {
   name: "SearchResult",
   components: {
@@ -80,6 +81,7 @@ export default {
   },
   data() {
     return {
+      token:global.token,
       param:'',
       meta:{},
       tableData: [],
@@ -99,11 +101,13 @@ export default {
     },
     searchinput(){
       this.getdata(1,this.searchinput);
+      console.log(this.token);
     }
   },
   methods:{
-        getdata(page,sea){this.$axios.get(`http://192.168.1.138:9003/InfoDrug/?search=${sea}&page=${page}`,{
+        getdata(page,sea){this.$axios.get(`http://${this.token}/InfoDrug/?search=${sea}&page=${page}`,{
           }).then(res=>{this.tableData=res.data.info_drugs;this.meta=res.data.meta;
+           
             console.log(res);
             this.loading=false;
             }) 

@@ -20,7 +20,7 @@ Vue.use(ElementUI)
 Vue.use(axios)
 Vue.use(utils)
 Vue.use(VueAwesomeSwiper)
-
+var mat='192.168.1.138:9003'
 
 Vue.config.productionTip = false
 Vue.prototype.$moment = moment

@@ -60,6 +60,7 @@
 
 <script>
  import ChildBanner from '@/components/ChildBanner'
+   import global from '@/common/global'
   export default {
     name: "Fhxresult",
     components:{
@@ -67,6 +68,7 @@
     },
     data() {
       return {
+        token:global.token,
         fzy:'',
         tableData:[],
         total:{}
@@ -82,7 +84,7 @@
         this.$router.go(-1)
       },
     getdata(val,sea){
-        this.$axios.get(`http://192.168.1.138:9003/InactiveIngredientSearch/?${sea}&page=${val}`,{
+        this.$axios.get(`http://${this.token}/InactiveIngredientSearch/?${sea}&page=${val}`,{
         }).then(res=>{this.tableData=res.data.results;this.total=res.data.count;
           console.log(res);
           console.log(this.tableData)})

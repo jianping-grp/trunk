@@ -245,6 +245,7 @@ $$$$
 
 <script>
   import ChildBanner from '@/components/ChildBanner'
+    import global from '@/common/global'
   export default {
     name: "MoleculeStuctureDe",
     components:{
@@ -252,6 +253,7 @@ $$$$
     },
     data() {
       return {
+        token:global.token,
         jsmeApplet:'',
         data:[],
         id2:'',
@@ -300,7 +302,7 @@ $$$$
       // this.jsmeOnLoad()
     },
     methods: {
-      getData(sea,si){this.$axios.get(`http://192.168.1.138:9003/Structuresimilarity/?pk1='${sea}'&pk2=${si}`,
+      getData(sea,si){this.$axios.get(`http://${this.token}/Structuresimilarity/?pk1='${sea}'&pk2=${si}`,
       {}).then(res=>{this.data=res.data
         console.log(this.data)
         this.loading=false;

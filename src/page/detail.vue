@@ -106,6 +106,7 @@
 
 <script>
   import ChildBanner from '@/components/ChildBanner'
+    import global from '@/common/global'
   export default {
     name: "detail",
     components:{
@@ -113,6 +114,7 @@
     },
     data() {
       return {
+        token:global.token,
         radio:'Structure',
         value:0.6,
         jsmeApplet:'',
@@ -144,7 +146,7 @@
         });
         document.JME = this.jsmeApplet;
 	  },
-      getData(sea){this.$axios.get(`http://192.168.1.138:9003/InfoDrug/?name=${sea}`,
+      getData(sea){this.$axios.get(`http://${this.token}/InfoDrug/?name=${sea}`,
 	  {}).then(res=>{this.tableData=res.data.info_drugs[0],
         console.log(res)})},
 	  // getData1(sea){this.$axios.get(`http://192.168.1.138:9003/NPidinotherdatabase/?database_id=${sea}`,

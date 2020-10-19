@@ -72,6 +72,7 @@
 
 <script>
   import ChildBanner from '@/components/ChildBanner'
+    import global from '@/common/global'
   export default {
     name: "MoleculeSubStuctureDe",
     components:{
@@ -79,6 +80,7 @@
     },
     data() {
       return {
+        token:global.token,
         jsmeApplet:'',
         data:[],
         id2:'',
@@ -125,7 +127,7 @@
 
     },
     methods: {
-      getData(sea){this.$axios.get(`http://192.168.1.138:9003/Substructuresimilarity/?pk='${sea}'`,
+      getData(sea){this.$axios.get(`http://${this.token}/Substructuresimilarity/?pk='${sea}'`,
       {}).then(res=>{this.data=res.data
         console.log(res)
         this.loading=false;
