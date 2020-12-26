@@ -50,6 +50,8 @@
           </el-table-column>
           <el-table-column label="Target" prop="Target_based_Actions">
           </el-table-column>
+          <el-table-column label="Trade Name" prop="trade_name">
+          </el-table-column>
           <el-table-column label="Active Indications" prop="Active_Indications">
           </el-table-column>
           <el-table-column label="Structure Type" prop="structure_type">
