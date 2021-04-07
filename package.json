@@ -5,7 +5,7 @@
   "author": "jiajia <162jiajia@163.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --host 192.168.0.123",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --host 172.16.41.153",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
@@ -27,7 +27,8 @@
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.1",
     "vue-moment": "^4.0.0",
-    "vue-router": "^3.1.3"
+    "vue-router": "^3.1.3",
+    "webpack-dev-server": "^2.9.6"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -46,6 +47,7 @@
     "babel-register": "^6.22.0",
     "chalk": "^2.0.1",
     "chromedriver": "^2.27.2",
+    "cli": "^1.0.1",
     "copy-webpack-plugin": "^4.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
@@ -83,9 +85,8 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
-    "webpack": "^3.6.0",
+    "webpack": "^3.12.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

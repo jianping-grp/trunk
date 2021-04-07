@@ -19,16 +19,16 @@
             <template slot-scope="props">
               
                 <el-form :inline="true" class="demo-form-inline">
-                  <el-form-item label="first_approval:" >
+                  <el-form-item label="First Approval:" >
                     {{ props.row.first_approval }}
                   </el-form-item>
                   <!-- <el-form-item label="Active Indication:">
                     {{ props.row.active_indications }}
                   </el-form-item> -->
-                  <el-form-item label="standard_inchi_key:">
+                  <el-form-item label="Standard Inchi Key:">
                     {{ props.row.standard_inchi_key}}
                   </el-form-item >
-                  <el-form-item label="canonical_smiles:">
+                  <el-form-item label="Canonical Smiles:">
                     {{ props.row.canonical_smiles}}
                   </el-form-item >
                   <!-- <el-form-item  class="buttonText">
@@ -48,7 +48,7 @@
           </el-table-column>
           <el-table-column label="ID" prop="name">
           </el-table-column>
-          <el-table-column label="Target" prop="Target_based_Actions">
+          <el-table-column label="Trade Name" prop="trade_name">
           </el-table-column>
           <el-table-column label="Active Indications" prop="Active_Indications">
           </el-table-column>
@@ -56,8 +56,12 @@
           </el-table-column>
           <el-table-column label="Molecule Type" prop="molecule_type">
           </el-table-column>          
-          <el-table-column label="Max Phase" prop="max_phase">
+          <el-table-column label="Max Phase" prop="max_phase">            
           </el-table-column>
+          <!-- <div id="jsme_container" code="JME.class" name="JME"  archive='JME.jar' codebase='.' width='360' height='315'></div> -->
+          <!-- <el-table-column label="1" prop="canonical_smiles" id="jsme_container" code="JME.class" name="JME"  archive='JME.jar' codebase='.' width='360' height='315'>
+            
+          </el-table-column> -->
         </el-table>
           <el-pagination
           background
@@ -94,6 +98,7 @@ export default {
       this.searchinput=this.$route.params.id;
       // this.getdata(1,this.searchinput);
       //  this.loading=true;
+      this.jsmeOnLoad()
   },
   watch:{
     $route(){
@@ -105,6 +110,12 @@ export default {
     }
   },
   methods:{
+    jsmeOnLoad() {
+        this.jsmeApplet = new JSApplet.JSME("jsme_container", "380px", "340px", {
+           "options" : "oldlook,star"
+        });
+        document.JME = this.jsmeApplet;
+      },
         getdata(page,sea){this.$axios.get(`http://${this.token}/InfoDrug/?search=${sea}&page=${page}`,{
           }).then(res=>{this.tableData=res.data.info_drugs;this.meta=res.data.meta;
            

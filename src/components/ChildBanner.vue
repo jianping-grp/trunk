@@ -17,7 +17,7 @@
           >
             <el-option label="Clinical" value="Clinical"></el-option>
             <el-option label="Drug" value="drug"></el-option>
-            <el-option label="Statistcal chart" value="Indication"></el-option>
+            <el-option label="Statistcal Chart" value="Indication"></el-option>
           </el-select>
           <el-button 
             slot="append"

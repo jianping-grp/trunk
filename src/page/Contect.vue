@@ -33,6 +33,7 @@
 <script>
   import Header from '@/components/Header'
   import ChildBanner from '@/components/ChildBanner'
+    import global from '@/common/global'
   export default {
     name: "Contect",
     components:{
@@ -41,6 +42,7 @@
     },
     data() {
       return {
+        token:global.token,
           ruleForm:{
           name: '',
           tel: '',
@@ -71,7 +73,7 @@
           }
         }
         console.log(body)
-        this.$axios.post('http://192.168.1.138:9003/Advice/',body).then(
+        this.$axios.post(`http://${this.token}/Advice/`,body).then(
           res=>{   
                    if (res) {
             alert('提交成功!');

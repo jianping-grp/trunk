@@ -1,6 +1,7 @@
 <template>
   <div class="footer">
-    天云融创数据科技（北京）有限公司  beagledata technology (beijing) Co.，Ltd
+    Copyright©2021 NanKai All Rights Reserved
+    <!-- 天云融创数据科技（北京）有限公司  beagledata technology (beijing) Co.，Ltd -->
   </div>
 </template>
 

@@ -9,12 +9,17 @@
       <div class="searchBox">
         
         
-        <el-input 
+        <el-autocomplete 
           :placeholder="content"  
           v-model="searchinput" 
           :autofocus="true"
           @keyup.enter.native="searchClick"
+          :fetch-suggestions="querySearch"
         >
+          <template slot-scope="{ item }">
+    <div class="name">{{ item.value }}</div>
+    <span class="addr">{{ item.address }}</span>
+  </template>
           <el-button 
             slot="append"
             @keyup.enter.native="searchClick"
@@ -22,7 +27,7 @@
           >
             SEARCH
           </el-button>
-        </el-input>
+        </el-autocomplete>
       </div>
       <div class="navMenu">
         <ul>
@@ -78,16 +83,16 @@
   <h3 color="#A1ECD9"> 新闻中心</h3>
 <ul>
   <li class='new'>
- <i class="el-icon-edit"></i><a href="">党委理论中心组传达学习习近平在科学家座谈会上的重要讲话  [2020-09-27]</a>
+ <i class="el-icon-edit"></i><a href="">中国工程院院士、江南大学原校长陈坚一行来我院调研  [2021-03-19]</a>
   </li>
     <li class='new'>
- <i class="el-icon-edit"></i><a href="">研究院入驻企业人才在“海河英才”创业大赛获奖  [2020-09-25]</a>
+ <i class="el-icon-edit"></i><a href="">【办实事】研究院与经开区联合举办“向企业家 汇报”营商环境主题座谈会  [2021-03-19]</a>
   </li>
       <li class='new'>
- <i class="el-icon-edit"></i><a href="">天津市生物医药产业“十四五”规划企业座谈会在我院召开 [2020-09-22]</a>
+ <i class="el-icon-edit"></i><a href="">天津商业大学生物与食品学院师生参观研究院 [2021-03-18]</a>
   </li>
       <li class='new'>
- <i class="el-icon-edit"></i><a href="">研究院与尚德药缘公司深度交流对接  [2020-09-21]</a>
+ <i class="el-icon-edit"></i><a href="">【办实事】研究院留创园举办医疗器械注册审批政策宣讲培训活动  [2021-03-12]</a>
   </li>
   </ul>
     
@@ -112,7 +117,8 @@
   //   swiper: directive
   // },
     data() {     
-      return {   
+      return {  
+        restaurants: [], 
         // swiperOptions: {
         //   pagination: {
         //     el: '.swiper-pagination'
@@ -123,7 +129,7 @@
         // },
         searchinput:'',
         clickIndex:-1,
-        content:'Please enter the search criteria',
+        content:'Please enter the search keyword',
         navMenuList:[{
           icon:'el-icon-edit',
           text:'CLINICAL'
@@ -143,17 +149,50 @@
     },
     mounted() {
 //  this.swiper.slideTo(5, 20000, true)
+this.restaurants = this.loadAll();
     },
     methods: {
+       querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) => {
+          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };},
+      loadAll() {
+        return [
+          { "value": "aspirin" , "address": "阿司匹林"},
+          { "value": "Tylenol"  , "address": "泰诺"},
+          { "value": "Amoxicillin" , "address": "阿莫西林" },
+          { "value": "Erythromycin" , "address": "红霉素" },
+          { "value": "Acetaminophen"  , "address": "对乙酰氨基酚"},
+          { "value": "Ibuprofen" , "address": "布洛芬" },
+        ];
+      },
+      loadAll2() {
+        return [
+          { "value": "breast cancer", "address": "乳腺癌" },
+          { "value": "lung cancer", "address": "肺癌" },
+          { "value": "liver cancer", "address": "肝癌" },
+          { "value": "asthma", "address": "哮喘" },
+          { "value": "cataract", "address": "白内障" },
+          { "value": "gout", "address": "痛风" },
+        ];
+      },
       menuClick(k){
         this.clickIndex = k;
         if(k == 0 ){
-          this.content='drug dinical information'
+          this.content='Drug dinical information'
+          this.restaurants = this.loadAll2();
           return;
         }
         ;
         if(k == 1){
-         this.content='statisticalChart information';
+         this.content='StatisticalChart information';
+         this.restaurants = this.loadAll2();
          return;
         }
         if(k == 2){
@@ -180,6 +219,14 @@
 </script>
 
 <style scoped lang="scss">
+  .name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .addr {
+      font-size: 12px;
+      color: #b4b4b4;
+    }
   // .logo{
   //   width:30px;
   //   background:#fff;
@@ -240,7 +287,8 @@
     .grid-content{
       margin-right:50px;
     }
-      .el-row {
+      .el-autocomplete{
+        width: 700px;
     margin-bottom: 20px;
     &:last-child {
       margin-bottom: 0;

@@ -26,7 +26,7 @@
 		  <div>
 		  	<el-menu-item index="4" v-if="!this.username">
 				<router-link to="/login">
-					LOGIN IN
+					Login In
 				</router-link>
 			</el-menu-item>
 			<el-submenu index="5" v-else>

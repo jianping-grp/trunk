@@ -15,13 +15,13 @@ import {HappyScroll}   from 'vue-happy-scroll'
 import utils from './common/utils'
 import "swiper/swiper-bundle.min.css";
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import global_ from './common/global'
 Vue.component('happy-scroll', HappyScroll)
 Vue.use(ElementUI)
 Vue.use(axios)
 Vue.use(utils)
 Vue.use(VueAwesomeSwiper)
-var mat='192.168.1.138:9003'
-
+Vue.prototype.GLOBAL = global_
 Vue.config.productionTip = false
 Vue.prototype.$moment = moment
 Vue.prototype.$echarts = echarts
